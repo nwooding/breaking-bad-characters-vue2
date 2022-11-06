@@ -6,7 +6,7 @@ import router from './router';
   <div id="app">
     <md-app>
       <md-app-toolbar class="md-primary">
-        Breaking Bad: The Characters App
+        <div class="title">Breaking Bad: The Characters App</div>
       </md-app-toolbar>
       <md-app-drawer md-permanent="clipped">
         <md-list>
@@ -35,4 +35,7 @@ import router from './router';
     width: 200px !important
   .md-app
     height: 100%
+  .title
+    font-size: 2em
+    padding: 20px 20px
 </style>

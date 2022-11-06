@@ -67,7 +67,7 @@ export const store = new Vuex.Store({
         });
       }
     },
-    unloadCharacterDetailAction (context) {
+    unloadCharacterDetailsAction (context) {
       context.commit("setCharacter", {isLoaded: false})
     },
   },

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import router from "@/router";
 import { store } from "@/store";
 import { computed, onMounted } from "vue";
+import CharacterListItem from "./CharacterListItem.vue";
 
 let characters = computed(() => store.state.characters);
 
@@ -15,8 +15,9 @@ onMounted(() => {
 
 <template>
   <div>
-    <div v-for="character in characters.items">
-      <a @click="router.push(`/character/${character.char_id}`)">{{ character.name }}</a>
+    <div v-if="characters.isLoaded" v-for="character in characters.items">
+      <CharacterListItem :character="character"/>
     </div>
+    <md-progress-spinner v-else md-mode="indeterminate"></md-progress-spinner>
   </div>
 </template>

@@ -1,15 +1,16 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <md-content>
+    <div>This is an app built to showcase basic Vue functionality, along with some other common Vue libraries </div>
+    <ul>
+      <li>Vue 2</li>
+      <li>Vuex</li>
+      <li>Vue Material</li>
+      <li>Vue Router</li>
+      <li>Sass</li>
+    </ul>
+    <div>All data is provided by the Breaking Bad API (https://breakingbadapi.com/documentation)</div>
+  </md-content>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>

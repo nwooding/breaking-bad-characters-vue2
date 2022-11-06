@@ -21,8 +21,6 @@ onUnmounted(() => {
       This is character {{character.character?.name}}
       <div v-for="quote in character.quotes">{{quote.quote}}</div>
     </div>
-    <div v-else>
-        Loading {{characterId}}
-    </div>
+    <md-progress-spinner v-else md-mode="indeterminate"></md-progress-spinner>
 </template>
   
