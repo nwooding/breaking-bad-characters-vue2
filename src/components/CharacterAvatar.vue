@@ -10,7 +10,7 @@ const props = defineProps<{
 
 <template>
     <div class="avatar-frame">
-        <span class="avatar-initials">{{ getInitials(charName) }}</span>
+        <div class="avatar-initials">{{ getInitials(charName) }}</div>
     </div>
 </template>
 
@@ -19,10 +19,12 @@ const props = defineProps<{
 .avatar-frame 
     width: 70px
     height: 70px
-    background-color: $primary
-    justify-content: center
-    text-align: center
+    background-image: linear-gradient(145deg, $primary 0%, $accent 100%)
     display: flex
+    align-items: center
+    justify-content: center
 .avatar-initials
     color: white
+    font-size: 22px
+    font-weight: 600
 </style>
