@@ -20,7 +20,7 @@ defineProps<{
     <div>bla</div>
     <span>{{ message }}</span>
     <TextComponent/>
-    <md-button>
+    <md-button class="md-primary">
         Home
     </md-button>
   </div>

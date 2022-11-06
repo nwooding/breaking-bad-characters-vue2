@@ -5,11 +5,11 @@ import router from "./router";
 
 import { MdButton } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
-import 'vue-material/dist/theme/default.css'
 
 Vue.use(MdButton)
 
 import "./assets/main.css";
+import "./assets/theme.sass"
 
 new Vue({
   router,
