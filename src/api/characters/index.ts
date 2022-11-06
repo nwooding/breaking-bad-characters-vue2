@@ -9,6 +9,6 @@ export const listCharacters = (): Promise<AxiosResponse<ListCharactersDto|any>> 
 }
 
 export const getCharacter = (id: number): Promise<AxiosResponse<CharacterDto|any>> => {
-    return api.get(`/characters/{id}`)
+    return api.get(`/characters/${id}`)
 }
 

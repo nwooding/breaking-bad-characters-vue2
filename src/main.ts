@@ -3,10 +3,14 @@ import { store } from "./store"
 import App from "./App.vue";
 import router from "./router";
 
-import { MdButton } from 'vue-material/dist/components'
+import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 
-Vue.use(MdButton)
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-default.css';
+
+Vue.use(VueMaterial)
+Vue.use(VueToast)
 
 import "./assets/main.css";
 import "./assets/theme.sass"
