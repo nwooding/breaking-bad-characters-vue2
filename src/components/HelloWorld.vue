@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { store } from "@/store";
+import TextComponent from "./TextComponent.vue";
 let message = store.state.message;
 
 defineProps<{
@@ -18,6 +19,7 @@ defineProps<{
     </h3>
     <div>bla</div>
     <span>{{ message }}</span>
+    <TextComponent/>
     <md-button>
         Home
     </md-button>
