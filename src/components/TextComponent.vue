@@ -1,5 +1,10 @@
+<script setup lang="ts">
+defineProps<{
+  label: string;
+}>();
+</script>
 <template>
-    <div class="breaking-bad">Color me with sass</div>
+    <div class="breaking-bad">{{ label }}</div>
 </template>
 <style lang="sass">
   $breaking-bad-color: #487F5A
