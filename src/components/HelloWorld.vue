@@ -1,7 +1,11 @@
 <script setup lang="ts">
+import { store } from "@/store";
+let message = store.state.message;
+
 defineProps<{
   msg: string;
 }>();
+
 </script>
 
 <template>
@@ -12,6 +16,11 @@ defineProps<{
       <a target="_blank" href="https://vitejs.dev/">Vite</a> +
       <a target="_blank" href="https://v2.vuejs.org/">Vue 2</a>. What's next?
     </h3>
+    <div>bla</div>
+    <span>{{ message }}</span>
+    <md-button>
+        Home
+    </md-button>
   </div>
 </template>
 
