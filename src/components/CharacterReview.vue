@@ -1,19 +1,30 @@
 <script setup lang="ts">
+import { postCharacterReview } from '@/api/reviews';
+import type CreateCharacterReviewRequestDto from '@/api/reviews/models/CreateCharacterReviewRequestDto';
 import router from '../router';
+import Vue from "vue"
 
-const formData = {
-    name: '',
-    date: '',
-    review: '',
-    rating: undefined,
-}
-const submit = (e: Event) => {
-    e.preventDefault();
-    console.log(formData)
-}
 const props = defineProps<{
   characterId: string
 }>();
+const formData: CreateCharacterReviewRequestDto = {
+    char_id: props.characterId,
+    name: '',
+    date: '',
+    review: '',
+    rating: 0,
+}
+const submit = (e: Event) => {
+    e.preventDefault();
+    postCharacterReview(formData).then((response) => {
+        if (response.status === 200) {
+            Vue.$toast.open('Thanks for submitting your review')
+        } 
+    }).catch((error) => {
+        Vue.$toast.open({message: 'Something went wrong while submitting your review', type: 'error'})
+    })
+}
+
 </script>
 <template>
     <div class="review-container">
@@ -37,7 +48,7 @@ const props = defineProps<{
             <md-field>
                 <label>Rating</label>
                 <md-select v-model="formData.rating">
-                    <md-option v-for="i in 10" :value="i">{{i}}</md-option>
+                    <md-option v-for="i in 10" :value="i" :key="i">{{i}}</md-option>
                 </md-select>
             </md-field>
             <md-button type="submit" class="md-primary md-raised">Submit</md-button>
