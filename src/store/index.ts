@@ -18,6 +18,7 @@ export interface RootState {
     quotes: QuoteDto[];
     isLoaded: boolean;
   }
+  favouriteCharacters: number[],
 }
 
 const state: RootState = {
@@ -30,7 +31,8 @@ const state: RootState = {
     character: undefined,
     quotes: [],
     isLoaded: false,
-  }
+  },
+  favouriteCharacters: []
 };
 
 export const store = new Vuex.Store({
@@ -42,6 +44,9 @@ export const store = new Vuex.Store({
     },
     setCharacter (state, payload) {
       state.characterDetail = payload;
+    },
+    setFavourite (state, payload) {
+      
     }
   },
   actions: {
@@ -67,7 +72,7 @@ export const store = new Vuex.Store({
         });
       }
     },
-    unloadCharacterDetailAction (context) {
+    unloadCharacterDetailsAction (context) {
       context.commit("setCharacter", {isLoaded: false})
     },
   },

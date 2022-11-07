@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CharacterView from "../views/CharacterView.vue"
+import CharacterReview from "../views/CharacterReview.vue"
 
 Vue.use(VueRouter);
 
@@ -23,9 +24,14 @@ const router = new VueRouter({
       component: () => import("../views/AboutView.vue"),
     },
     {
-      path: "/character/:id",
+      path: "/characters/:id",
       name: "characterDetail",
       component: CharacterView
+    },
+    {
+      path: "/characters/:id/review",
+      name: "characterReview",
+      component: CharacterReview
     }
   ],
 });
