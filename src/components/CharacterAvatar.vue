@@ -2,7 +2,7 @@
 import stringUtilities from '@/utilities/stringUtilities';
 
 const { getInitials } = stringUtilities;
-const props = defineProps<{
+defineProps<{
     charName: string;
     charId: number;
 }>();

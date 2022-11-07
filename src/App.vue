@@ -17,7 +17,7 @@ const toggleMenu = () =>{
         <md-button class="md-icon-button hidden-desktop" @click="toggleMenu">
           <md-icon>menu</md-icon>
         </md-button>
-        <div class="title">Breaking Bad: The Characters App</div>
+        <h1 class="title">Breaking Bad: The Characters App</h1>
       </md-app-toolbar>
       <md-app-drawer md-permanent="clipped" :md-active.sync="menuVisible">
         <md-list>

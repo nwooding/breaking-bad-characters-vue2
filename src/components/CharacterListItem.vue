@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
     <div>
-        <router-link :to="`/character/${character.char_id}`">
+        <router-link :to="`/characters/${character.char_id}`">
         <md-card md-with-hover class="md-with-hover">
             <md-card-header>
                 <md-card-media>
