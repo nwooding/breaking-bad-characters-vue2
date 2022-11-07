@@ -17,8 +17,7 @@ const setIsFavorite = (e: Event) => {
 
 <template>
     <div>
-
-        <md-card md-with-hover class="md-with-hover">
+        <md-card >
             <md-card-header>
                 <md-card-media>
                     <CharacterAvatar :char-name="character.name" :char-id="character.char_id" />
@@ -44,4 +43,6 @@ const setIsFavorite = (e: Event) => {
     font-size: 1.5em
 .faved
     color: $accent !important
+.not-faved
+    color: #ccc !important
 </style>

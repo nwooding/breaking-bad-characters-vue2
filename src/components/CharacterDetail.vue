@@ -66,6 +66,7 @@ onUnmounted(() => {
   li
     margin-bottom: 8px
 .profile-header
+  font-family: Roboto Slab
   margin-left: 38px
   margin-bottom: 12px
   font-weight: 800
