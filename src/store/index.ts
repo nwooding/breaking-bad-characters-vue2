@@ -1,14 +1,13 @@
 import { getCharacter, listCharacters } from "@/api/characters";
 import type CharacterDto from "@/api/characters/models/CharacterDto";
 import { listQuotesForCharacter } from "@/api/quotes";
-import type { QuoteDto } from "@/api/quotes/models/QuoteDto";
+import type QuoteDto from "@/api/quotes/models/QuoteDto";
 import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
 
 export interface RootState {
-  message: string;
   characters: {
     items: CharacterDto[];
     isLoaded: boolean;
@@ -18,11 +17,10 @@ export interface RootState {
     quotes: QuoteDto[];
     isLoaded: boolean;
   }
-  favouriteCharacters: number[],
+  favouriteCharacters: string[],
 }
 
 const state: RootState = {
-  message: "Basic message",
   characters: {
     items: [],
     isLoaded: false
@@ -45,8 +43,8 @@ export const store = new Vuex.Store({
     setCharacter (state, payload) {
       state.characterDetail = payload;
     },
-    setFavourite (state, payload) {
-      
+    setFavourites (state, payload) {
+      state.favouriteCharacters = payload;
     }
   },
   actions: {
@@ -55,7 +53,6 @@ export const store = new Vuex.Store({
         if(response.status === 200){
           context.commit("setCharacters", response.data)
         }}
-
       )
     },
     getCharacterDetailsAction (context, payload) {
@@ -74,6 +71,16 @@ export const store = new Vuex.Store({
     },
     unloadCharacterDetailsAction (context) {
       context.commit("setCharacter", {isLoaded: false})
+    },
+    loadFavouritesAction (context) {
+        const favourites = window.localStorage.getItem('favourites')
+        if (favourites) {
+          context.commit("setFavourites", favourites.split(","))
+        }
+    },
+    saveFavouritesAction (context, payload) {
+        window.localStorage.setItem('favourites', payload)
+        context.commit("setFavourites", payload)
     },
   },
   modules: {},

@@ -1,4 +1,4 @@
-export interface QuoteDto {
+export default interface QuoteDto {
     quote_id: number;
     quote: string;
     author: string;

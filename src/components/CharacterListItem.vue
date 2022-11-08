@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import type CharacterDto from "@/api/characters/models/CharacterDto";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import CharacterAvatar from "./CharacterAvatar.vue";
-let isFavorite = ref(false);
 const props = defineProps<{
-    character: CharacterDto
+    character: CharacterDto,
+    isFavourite: boolean
 }>();
-let favoriteClass = computed(() => isFavorite.value ? 'faved' : 'not-faved');
-const setIsFavorite = (e: Event) => {
-    console.log(isFavorite.value)
-    e.preventDefault();
-    e.stopPropagation();
-    isFavorite.value = !isFavorite.value;
-}
+let favouriteClass = computed(() => props.isFavourite ? 'faved' : 'not-faved');
+const emit = defineEmits<{
+  (event: 'toggleFavourite', id: number) : void;
+}>()
 </script>
 
 <template>
@@ -26,8 +23,8 @@ const setIsFavorite = (e: Event) => {
                     <router-link :to="`/characters/${character.char_id}`">{{ character.name }}</router-link>
 
                 </md-card-header-text>
-                <a @click="setIsFavorite">
-                    <md-icon :class="favoriteClass">favorite</md-icon>
+                <a @click="$emit('toggleFavourite', character.char_id)">
+                    <md-icon :class="favouriteClass">favorite</md-icon>
                 </a>
             </md-card-header>
 
