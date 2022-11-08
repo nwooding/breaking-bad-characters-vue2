@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { store } from '@/store';
-import { computed, onMounted, onUnmounted } from 'vue';
+import type CharacterDto from '@/api/characters/models/CharacterDto';
+import type QuoteDto from '@/api/quotes/models/QuoteDto';
 import router from '../router';
-const props = defineProps<{
-  characterId: string
+defineProps<{
+  character: {
+    character?: CharacterDto,
+    isLoaded: boolean,
+    quotes: QuoteDto[],
+  }
 }>();
 
-let character = computed(() => store.state.characterDetail);
-
-onMounted(() => {
-    store.dispatch("getCharacterDetailsAction", props.characterId);
-})
-onUnmounted(() => {
-    store.dispatch("unloadCharacterDetailsAction");
-})
 </script>
 
 <template>
@@ -30,7 +26,7 @@ onUnmounted(() => {
         <li><span class="bold">Occupations: </span>{{character.character?.occupation.join(",")}}</li>
         <li><span class="bold">Status: </span>{{character.character?.status}}</li>
       </ul>
-      <md-button class="md-accent md-raised review-button" @click="router.push(`/characters/${characterId}/review`)">Leave review</md-button>
+      <md-button class="md-accent md-raised review-button" @click="router.push(`/characters/${character.character?.char_id}/review`)">Leave review</md-button>
 
         </div>
       <div class="quotes-area">
@@ -50,15 +46,18 @@ onUnmounted(() => {
   display: grid
   grid-template-areas: "image attributes" "quotes quotes"
   grid-template-columns: 1fr 1fr
+
   margin-left: 5%
   margin-right: 5%
 .character-image
   width:100%
   display: block
 .image-area
-  area: image
+  grid-area: image
 .quotes-area
-  area: quotes
+  grid-area: quotes
+.attributes-area
+  grid-area: attributes
 .bold
   font-weight:800
 .attribute-list
@@ -66,6 +65,7 @@ onUnmounted(() => {
   li
     margin-bottom: 8px
 .profile-header
+  font-family: Roboto Slab
   margin-left: 38px
   margin-bottom: 12px
   font-weight: 800

@@ -24,15 +24,15 @@ const router = new VueRouter({
       component: () => import("../views/AboutView.vue"),
     },
     {
+      path: "/characters/:id/review",
+      name: "characterReview",
+      component: CharacterReview
+    },
+    {
       path: "/characters/:id",
       name: "characterDetail",
       component: CharacterView
     },
-    {
-      path: "/characters/:id/review",
-      name: "characterReview",
-      component: CharacterReview
-    }
   ],
 });
 
